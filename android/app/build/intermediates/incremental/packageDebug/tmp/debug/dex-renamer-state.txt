@@ -1,0 +1,4 @@
+#Mon Jan 13 15:38:53 IST 2020
+base.0=/home/navintantiv4/Documents/work/test/navigationApp/simpleNavigation/android/app/build/intermediates/transforms/dexMerger/debug/0
+renamed.0=classes.dex
+path.0=classes.dex
