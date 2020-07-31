@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import  API_KEY from './utils/WeatherApiKey';
+// import  { API_KEY} from './utils/WeatherApiKey';
 import Weather from './component/Weather';
 
 const styles = StyleSheet.create({
@@ -21,12 +21,16 @@ const styles = StyleSheet.create({
 
 
 export default class App extends React.Component{
-  state = {
-    isLoading : false,
-    temperature : 0,
-    weatherCondition : null,
-    error: null
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      isLoading : false,
+      temperature : 0,
+      weatherCondition : null,
+      error: null
+    };
+  }
+ 
 
   componentDidMount(){
     navigator.geolocation.getCurrentPosition(
@@ -34,6 +38,7 @@ export default class App extends React.Component{
         this.fetchWeather(position.coords.latitude, position.coords.longitude)
       },
       error => {
+        console.log(error)
         this.setState({
           error: "Error Getting Weather Conditions"
         });
@@ -42,7 +47,7 @@ export default class App extends React.Component{
   }
 
   fetchWeather(lat = 25, lon =25 ){
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e9a538aa2833c80d70422067ff252c51&units=metric`)
     .then(res => res.json())
     .then(json => {
       this.setState({
